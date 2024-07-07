@@ -1,0 +1,11 @@
+[package]
+name = "unrelatable"
+version = "0.1.0"
+edition = "2021"
+readme = "README.md"
+description = "a relational algebra system for data collections"
+
+[dependencies]
+recursion = "0.5.2"
+# serde = { workspace = true }
+# serde_json = { workspace = true }
