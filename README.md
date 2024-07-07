@@ -27,8 +27,8 @@ so i move to trait objects:
 ```rust
 pub trait RowLike<K: Eq + Clone, L, R> {
     fn get_key(&self) -> &K;
-    fn get_left(&self) -> Option<&Box<&L>>;
-    fn get_right(&self) -> Option<&Box<&R>>;
+    fn get_left(&self) -> Option<&L>;
+    fn get_right(&self) -> Option<&R>;
 }
 ```
 
@@ -36,6 +36,6 @@ but that would move everything onto the heap. even though performance isn't nece
 
 so i went back to the GADT idea. but then i went back to the heap idea, this time leveraging the pattern for trampolining/recursion schemes from the recursion library.
 
-but that felt too experimental for rust. the library is simple, doesn't add a ton on top, but also there's no mention of benchmarks/performance. it seems to do a lot of extra vector building in the trampoline step.
+but that felt too experimental for rust. sure, the library is simple and doesn't add a ton on top. but also there's no mention of benchmarks/performance. it seems to do a lot of extra vector building in the trampoline step. and there's that whole heap thing.
 
 so, idioms. maybe the right way to go about this is something more c/zig/nim-like that would require me to deal with more state management in the control flow, but run on the stack and not get tied up in the types.
